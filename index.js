@@ -13,22 +13,32 @@ restService.use(
 
 restService.use(bodyParser.json());
 
+
 restService.post("/echo", function(req, res) {
-    let SalesforceConnection = require("node-salesforce-connection");
-    let sfConn = new SalesforceConnection();
+  let SalesforceConnection = require("node-salesforce-connection");
+ 
+(async () => {
+ 
+  let sfConn = new SalesforceConnection();
  
   await sfConn.soapLogin({
     hostname: "login.salesforce.com",
     apiVersion: "39.0",
-    username: "ajinkya33@zen4orce.com",
-    password: "Ajinkya@33ymtTsmynVY7EUOcZJeXlU2VV",
+    username: "example@example.com",
+    password: "MyPasswordMySecurityToken",
   });
+ 
+let myNewAccount = {Name: "test"};
+let result = await sfConn.rest("/services/data/v39.0/sobjects/Account",
+{method: "POST", body: myNewAccount});
 
-  return res.json({
-    speech: "speech",
-    displayText: "speech",
+    return res.json({
+    speech: result.id,
+    displayText: result.id,
     source: "webhook-echo-sample"
   });
+ 
+})().catch(ex => console.error(ex.stack));
 });
 
 restService.post("/audio", function(req, res) {
