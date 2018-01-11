@@ -5,11 +5,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 
-let SalesforceConnection = require("node-salesforce-connection");
-console.error('heyyy',SalesforceConnection);
+
+console.error('heyyy');
 (async () => {
      console.error('heyyy');
-/*let sfConn = new SalesforceConnection();
+/*let SalesforceConnection = require("node-salesforce-connection");
+let sfConn = new SalesforceConnection();
 
 await sfConn.soapLogin({
     hostname: "login.salesforce.com",
