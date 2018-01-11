@@ -15,40 +15,16 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
-    
-let SalesforceConnection = require("node-salesforce-connection");
-let sfConn = new SalesforceConnection();
-await sfConn.soapLogin({
-    hostname: "login.salesforce.com",
-    apiVersion: "39.0",
-    username: "ajinkya33@zen4orce.com",
-    password: "Ajinkya@33ymtTsmynVY7EUOcZJeXlU2VV",
-  });
-   let recentAccounts = await sfConn.rest("/services/data/v39.0/query/?q="
-    + encodeURIComponent("select Id, Name from Account"));
- 
-  for (let account of recentAccounts.records) {
-    console.log("Account " + account.Name + " was created recently.");
-  }
-
-     
-     
-    var speech =
+  var speech =
     req.body.result &&
     req.body.result.parameters &&
     req.body.result.parameters.echoText
       ? req.body.result.parameters.echoText
       : "Seems like some problem. Speak again.";
-   console.log(speech);
-/*let myNewAccount = {Name: speech};
-
-let result = await sfConn.rest("/services/data/v39.0/sobjects/Account",
-{method: "POST", body: myNewAccount});
-console.log(result.Id);   
-     */
+  console.log("Server up and listening"+speech;
   return res.json({
-    speech: 'test',
-    displayText: 'test',
+    speech: speech,
+    displayText: speech,
     source: "webhook-echo-sample"
   });
 });
