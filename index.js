@@ -6,12 +6,12 @@ const bodyParser = require("body-parser");
 
 
 let SalesforceConnection = require("node-salesforce-connection");
-console.error('heyyy');
+console.log('SalesforceConnection');
 (async () => {
-     console.error('heyyy');
+     console.log('async');
 
 let sfConn = new SalesforceConnection();
-
+ console.log('sfConn'+sfConn);
 await sfConn.soapLogin({
     hostname: "login.salesforce.com",
     apiVersion: "39.0",
@@ -44,12 +44,12 @@ restService.post("/echo", function(req, res) {
       ? req.body.result.parameters.echoText
       : "Seems like some problem. Speak again.";
    console.log(speech);
-let myNewAccount = '{Name: speech}';
+let myNewAccount = {Name: speech};
 
 let result = await sfConn.rest("/services/data/v39.0/sobjects/Account",
 {method: "POST", body: myNewAccount});
- 
-    
+console.log(result.Id);   
+     
   return res.json({
     speech: result.Id,
     displayText: result.Id,
