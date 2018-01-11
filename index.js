@@ -3,6 +3,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
+var http = require("http");
+setInterval(function() {
+    http.get("https://echo-service-test.herokuapp.com");
+}, 300000); 
+
 const restService = express();
 
 restService.use(
