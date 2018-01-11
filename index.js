@@ -4,16 +4,6 @@ debugger;
 const express = require("express");
 const bodyParser = require("body-parser");
 
-
-/*
-let recentAccounts = await sfConn.rest("/services/data/v39.0/query/?q="
-  + encodeURIComponent("select Id, Name from Account where id ='0017F00000PZvrO'"));
-*/
-/* for (let account of recentAccounts.records) {
-  console.log("Account " + account.Name + " was created recently.");
-  } */
-})().catch(ex => console.error(ex.stack));
-
 const restService = express();
 
 restService.use(
@@ -25,23 +15,21 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
-     
+    
 let SalesforceConnection = require("node-salesforce-connection");
-console.log('SalesforceConnection');
-
-console.log('SalesforceConnection');
-
-     console.log('async');
-
 let sfConn = new SalesforceConnection();
- console.log('sfConn'+sfConn);
-     
 await sfConn.soapLogin({
     hostname: "login.salesforce.com",
     apiVersion: "39.0",
     username: "ajinkya33@zen4orce.com",
     password: "Ajinkya@33ymtTsmynVY7EUOcZJeXlU2VV",
   });
+   let recentAccounts = await sfConn.rest("/services/data/v39.0/query/?q="
+    + encodeURIComponent("select Id, Name from Account"));
+ 
+  for (let account of recentAccounts.records) {
+    console.log("Account " + account.Name + " was created recently.");
+  }
 
      
      
@@ -59,8 +47,8 @@ let result = await sfConn.rest("/services/data/v39.0/sobjects/Account",
 console.log(result.Id);   
      */
   return res.json({
-    speech: recentAccounts,
-    displayText: recentAccounts,
+    speech: 'test',
+    displayText: 'test',
     source: "webhook-echo-sample"
   });
 });
