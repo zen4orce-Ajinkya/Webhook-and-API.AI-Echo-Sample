@@ -3,11 +3,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-var http = require("http");
-setInterval(function() {
-    http.get("https://echo-service-test.herokuapp.com");
-}, 300000); 
-
 const restService = express();
 
 restService.use(
@@ -19,27 +14,22 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
-  
-let SalesforceConnection = require("node-salesforce-connection");
-let sfConn = new SalesforceConnection();
-await sfConn.soapLogin({
-  hostname: "login.salesforce.com",
-  apiVersion: "39.0",
-  username: "example@example.com",
-  password: "MyPasswordMySecurityToken",
+    let SalesforceConnection = require("node-salesforce-connection");
+    let sfConn = new SalesforceConnection();
+ 
+  await sfConn.soapLogin({
+    hostname: "login.salesforce.com",
+    apiVersion: "39.0",
+    username: "example@example.com",
+    password: "MyPasswordMySecurityToken",
+  });
+
+  return res.json({
+    speech: "speech",
+    displayText: "speech",
+    source: "webhook-echo-sample"
+  });
 });
-
-return res.json({
-  speech: 'Test',
-  displayText: 'Test',
-  source: "webhook-echo-sample"
-});
-});
-    
-
-
-  
-
 
 restService.post("/audio", function(req, res) {
   var speech = "";
