@@ -9,14 +9,14 @@ let SalesforceConnection = require("node-salesforce-connection");
 
 (async () => {
 let sfConn = new SalesforceConnection();
-
+/*
 await sfConn.soapLogin({
     hostname: "login.salesforce.com",
     apiVersion: "39.0",
     username: "ajinkya33@zen4orce.com",
     password: "Ajinkya@33ymtTsmynVY7EUOcZJeXlU2VV",
   });
-/*
+
 let recentAccounts = await sfConn.rest("/services/data/v39.0/query/?q="
   + encodeURIComponent("select Id, Name from Account where CreatedDate = LAST_WEEK"));
 
