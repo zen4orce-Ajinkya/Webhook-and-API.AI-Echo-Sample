@@ -1,13 +1,13 @@
 "use strict";
 
-
+debugger;
 const express = require("express");
 const bodyParser = require("body-parser");
 
 
 let SalesforceConnection = require("node-salesforce-connection");
 console.log('SalesforceConnection');
-/*
+
 console.log('SalesforceConnection');
 (async () => {
      console.log('async');
@@ -28,7 +28,7 @@ for (let account of recentAccounts.records) {
   console.log("Account " + account.Name + " was created recently.");
   }
 })().catch(ex => console.error(ex.stack));
-*/
+
 const restService = express();
 
 restService.use(
