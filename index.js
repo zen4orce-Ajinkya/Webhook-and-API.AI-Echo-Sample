@@ -22,8 +22,8 @@ restService.post("/echo", function(req, res) {
   await sfConn.soapLogin({
     hostname: "login.salesforce.com",
     apiVersion: "39.0",
-    username: "example@example.com",
-    password: "MyPasswordMySecurityToken",
+    username: "ajinkya33@zen4orce.com",
+    password: "Ajinkya@33ymtTsmynVY7EUOcZJeXlU2VV",
   });
  
 let myNewAccount = {Name: "test"};
