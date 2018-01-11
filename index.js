@@ -5,25 +5,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 
-let SalesforceConnection = require("node-salesforce-connection");
-console.log('SalesforceConnection');
-
-console.log('SalesforceConnection');
-(async () => {
-     console.log('async');
-
-let sfConn = new SalesforceConnection();
- console.log('sfConn'+sfConn);
-await sfConn.soapLogin({
-    hostname: "login.salesforce.com",
-    apiVersion: "39.0",
-    username: "ajinkya33@zen4orce.com",
-    password: "Ajinkya@33ymtTsmynVY7EUOcZJeXlU2VV",
-  });
-
+/*
 let recentAccounts = await sfConn.rest("/services/data/v39.0/query/?q="
   + encodeURIComponent("select Id, Name from Account where id ='0017F00000PZvrO'"));
-
+*/
 /* for (let account of recentAccounts.records) {
   console.log("Account " + account.Name + " was created recently.");
   } */
@@ -40,7 +25,27 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
-  var speech =
+     
+let SalesforceConnection = require("node-salesforce-connection");
+console.log('SalesforceConnection');
+
+console.log('SalesforceConnection');
+
+     console.log('async');
+
+let sfConn = new SalesforceConnection();
+ console.log('sfConn'+sfConn);
+     
+await sfConn.soapLogin({
+    hostname: "login.salesforce.com",
+    apiVersion: "39.0",
+    username: "ajinkya33@zen4orce.com",
+    password: "Ajinkya@33ymtTsmynVY7EUOcZJeXlU2VV",
+  });
+
+     
+     
+    var speech =
     req.body.result &&
     req.body.result.parameters &&
     req.body.result.parameters.echoText
