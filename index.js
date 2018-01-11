@@ -22,7 +22,7 @@ restService.post("/echo", function(req, res) {
   
 let SalesforceConnection = require("node-salesforce-connection");
 
-(async () => {
+
 
 let sfConn = new SalesforceConnection();
 
@@ -55,7 +55,7 @@ return res.json({
 
 })().catch(ex => console.error(ex.stack));
   
-});
+
 
 restService.post("/audio", function(req, res) {
   var speech = "";
