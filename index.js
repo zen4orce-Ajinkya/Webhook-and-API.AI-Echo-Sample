@@ -3,6 +3,24 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
+
+let SalesforceConnection = require("node-salesforce-connection");
+let sfConn = new SalesforceConnection();
+
+await sfConn.soapLogin({
+    hostname: "login.salesforce.com",
+    apiVersion: "39.0",
+    username: "example@example.com",
+    password: "MyPasswordMySecurityToken",
+  });
+
+let recentAccounts = await sfConn.rest("/services/data/v39.0/query/?q="
+  + encodeURIComponent("select Id, Name from Account where CreatedDate = LAST_WEEK"));
+
+for (let account of recentAccounts.records) {
+  console.log("Account " + account.Name + " was created recently.");
+  }
+
 const restService = express();
 
 restService.use(
