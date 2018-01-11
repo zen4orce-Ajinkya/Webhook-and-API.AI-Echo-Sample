@@ -6,10 +6,11 @@ const bodyParser = require("body-parser");
 
 
 let SalesforceConnection = require("node-salesforce-connection");
-
+console.error('heyyy',SalesforceConnection);
 (async () => {
-let sfConn = new SalesforceConnection();
-/*
+     console.error('heyyy');
+/*let sfConn = new SalesforceConnection();
+
 await sfConn.soapLogin({
     hostname: "login.salesforce.com",
     apiVersion: "39.0",
