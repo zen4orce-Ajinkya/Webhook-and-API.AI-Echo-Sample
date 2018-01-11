@@ -5,7 +5,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 
-/*let SalesforceConnection = require("node-salesforce-connection");
+let SalesforceConnection = require("node-salesforce-connection");
 let sfConn = new SalesforceConnection();
 
 await sfConn.soapLogin({
@@ -14,7 +14,7 @@ await sfConn.soapLogin({
     username: "ajinkya33@zen4orce.com",
     password: "Ajinkya@33ymtTsmynVY7EUOcZJeXlU2VV",
   });
-
+/*
 let recentAccounts = await sfConn.rest("/services/data/v39.0/query/?q="
   + encodeURIComponent("select Id, Name from Account where CreatedDate = LAST_WEEK"));
 
