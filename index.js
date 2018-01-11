@@ -11,11 +11,22 @@ restService.use(
   })
 );
 
+
+
+
 restService.use(bodyParser.json());
 
 
 restService.post("/echo", function(req, res) {
   let SalesforceConnection = require("node-salesforce-connection");
+var timeout = require('connect-timeout'); //express v4
+
+app.use(timeout(120000));
+app.use(haltOnTimedout);
+
+function haltOnTimedout(req, res, next){
+if (!req.timedout) next();
+}
  
 (async () => {
  
