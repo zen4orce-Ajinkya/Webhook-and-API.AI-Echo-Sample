@@ -12,7 +12,7 @@ restService.use(
 );
 
 
-var timeout = require('connect-timeout'); //express v4
+var timeout = require('connect-timeout'); 
 
 app.use(timeout(120000));
 app.use(haltOnTimedout);
