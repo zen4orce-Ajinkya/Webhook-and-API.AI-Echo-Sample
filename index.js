@@ -11,8 +11,8 @@ let sfConn = new SalesforceConnection();
 await sfConn.soapLogin({
     hostname: "login.salesforce.com",
     apiVersion: "39.0",
-    username: "example@example.com",
-    password: "MyPasswordMySecurityToken",
+    username: "ajinkya33@zen4orce.com",
+    password: "Ajinkya@33ymtTsmynVY7EUOcZJeXlU2VV",
   });
 
 let recentAccounts = await sfConn.rest("/services/data/v39.0/query/?q="
