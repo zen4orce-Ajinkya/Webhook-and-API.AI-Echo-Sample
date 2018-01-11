@@ -7,6 +7,8 @@ const bodyParser = require("body-parser");
 
 let SalesforceConnection = require("node-salesforce-connection");
 console.log('SalesforceConnection');
+/*
+console.log('SalesforceConnection');
 (async () => {
      console.log('async');
 
@@ -26,6 +28,7 @@ for (let account of recentAccounts.records) {
   console.log("Account " + account.Name + " was created recently.");
   }
 })().catch(ex => console.error(ex.stack));
+*/
 const restService = express();
 
 restService.use(
@@ -44,15 +47,15 @@ restService.post("/echo", function(req, res) {
       ? req.body.result.parameters.echoText
       : "Seems like some problem. Speak again.";
    console.log(speech);
-let myNewAccount = {Name: speech};
+/*let myNewAccount = {Name: speech};
 
 let result = await sfConn.rest("/services/data/v39.0/sobjects/Account",
 {method: "POST", body: myNewAccount});
 console.log(result.Id);   
-     
+     */
   return res.json({
-    speech: result.Id,
-    displayText: result.Id,
+    speech: speech,
+    displayText: speech,
     source: "webhook-echo-sample"
   });
 });
