@@ -40,7 +40,7 @@ restService.post("/echo", function(req, res) {
       ? req.body.result.parameters.echoText
       : "Seems like some problem. Speak again.";
    console.log(speech);
-let myNewAccount = {Name: speech};
+let myNewAccount = '{Name: speech}';
 
 let result = await sfConn.rest("/services/data/v39.0/sobjects/Account",
 {method: "POST", body: myNewAccount});
