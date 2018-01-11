@@ -24,7 +24,7 @@ let recentAccounts = await sfConn.rest("/services/data/v39.0/query/?q="
 
 for (let account of recentAccounts.records) {
   console.log("Account " + account.Name + " was created recently.");
-  }/**/
+  }
 })().catch(ex => console.error(ex.stack));
 const restService = express();
 
@@ -44,10 +44,10 @@ restService.post("/echo", function(req, res) {
       ? req.body.result.parameters.echoText
       : "Seems like some problem. Speak again.";
    console.log(speech);
-/*let myNewAccount = '{Name: speech}';
+let myNewAccount = '{Name: speech}';
 
 let result = await sfConn.rest("/services/data/v39.0/sobjects/Account",
-{method: "POST", body: myNewAccount});*/
+{method: "POST", body: myNewAccount});
  
     
   return res.json({
