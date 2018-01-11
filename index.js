@@ -29,7 +29,7 @@ await sfConn.soapLogin({
 });
 
 let recentAccounts = await sfConn.rest("/services/data/v39.0/query/?q="
-  + encodeURIComponent("select Id, Name from Account where CreatedDate = LAST_WEEK"));
+  + encodeURIComponent("select Id, Name from Account where Name ='ADSTestAccount6806'"));
 
 for (let account of recentAccounts.records) {
   console.log("Account " + account.Name + " was created recently.");
