@@ -14,17 +14,42 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
-  var speech =
-    req.body.result &&
-    req.body.result.parameters &&
-    req.body.result.parameters.echoText
-      ? req.body.result.parameters.echoText
-      : "Seems like some problem. Speak again.";
-  return res.json({
-    speech: "Speech",
-    displayText: "Speech",
-    source: "webhook-echo-sample"
-  });
+  
+let SalesforceConnection = require("node-salesforce-connection");
+
+(async () => {
+
+let sfConn = new SalesforceConnection();
+
+await sfConn.soapLogin({
+  hostname: "login.salesforce.com",
+  apiVersion: "39.0",
+  username: "example@example.com",
+  password: "MyPasswordMySecurityToken",
+});
+
+let recentAccounts = await sfConn.rest("/services/data/v39.0/query/?q="
+  + encodeURIComponent("select Id, Name from Account where CreatedDate = LAST_WEEK"));
+
+for (let account of recentAccounts.records) {
+  console.log("Account " + account.Name + " was created recently.");
+}
+  
+var speech =
+req.body.result &&
+req.body.result.parameters &&
+req.body.result.parameters.echoText
+  ? req.body.result.parameters.echoText
+  : "Seems like some problem. Speak again.";
+  
+return res.json({
+  speech: recentAccounts,
+  displayText: recentAccounts,
+  source: "webhook-echo-sample"
+});
+
+})().catch(ex => console.error(ex.stack));
+  
 });
 
 restService.post("/audio", function(req, res) {
