@@ -2,7 +2,7 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
-const winston = require('winston');
+const winston = require("winston");
 
 
 
@@ -11,7 +11,7 @@ const restService = express();
 restService.use(
   bodyParser.urlencoded({
     extended: true
-  });
+  })
 );
 restService.use(bodyParser.json());
 restService.post("/echo", function(req, res) {
@@ -24,8 +24,8 @@ restService.post("/echo", function(req, res) {
   
   let SalesforceConnection = require("node-salesforce-connection");
   
-winston.log(winston.level = 'debug', 'Name', {  
-  Name: Name
+winston.log('info', 'Hello log files!', {  
+  someKey: 'some-value'
 });
  
 (async () => {
