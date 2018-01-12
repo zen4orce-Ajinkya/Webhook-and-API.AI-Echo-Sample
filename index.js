@@ -15,8 +15,8 @@ restService.post("/echo", function(req, res) {
   var Name =
   req.body.result &&
   req.body.result.parameters &&
-  req.body.result.parameters.echoName
-    ? req.body.result.parameters.echoName
+  req.body.result.parameters.echoText
+    ? req.body.result.parameters.echoText
     : "Seems like some problem. Speak again.";
   
   let SalesforceConnection = require("node-salesforce-connection");
