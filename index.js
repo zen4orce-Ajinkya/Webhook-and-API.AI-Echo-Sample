@@ -2,6 +2,9 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const winston = require('winston')
+
+
 
 const restService = express();
 
@@ -20,7 +23,10 @@ restService.post("/echo", function(req, res) {
     : "Seems like some problem. Speak again.";
   
   let SalesforceConnection = require("node-salesforce-connection");
-
+  
+winston.log(winston.level = 'debug', 'Name', {  
+  Name: Name
+})
  
 (async () => {
  
