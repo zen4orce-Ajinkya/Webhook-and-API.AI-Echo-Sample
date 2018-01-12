@@ -26,7 +26,7 @@ restService.post("/echo", function(req, res) {
   
 winston.log(winston.level = 'debug', 'Name', {  
   Name: Name
-})
+});
  
 (async () => {
  
