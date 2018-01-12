@@ -12,13 +12,6 @@ restService.use(
 );
 restService.use(bodyParser.json());
 restService.post("/echo", function(req, res) {
-  var Email =
-    req.body.result &&
-    req.body.result.parameters &&
-    req.body.result.parameters.echoText
-      ? req.body.result.parameters.echoText
-      : "Seems like some problem. Speak again.";
-  
   var Name =
   req.body.result &&
   req.body.result.parameters &&
@@ -40,7 +33,7 @@ restService.post("/echo", function(req, res) {
     password: "Ajinkya@33ymtTsmynVY7EUOcZJeXlU2VV",
   });
  
-let myNewAccount = {Name: speech,NumberOfEmployees: Name};
+let myNewAccount = {Name: Name,Jigsaw: Name};
 let result = await sfConn.rest("/services/data/v39.0/sobjects/Account",
 {method: "POST", body: myNewAccount});
 
