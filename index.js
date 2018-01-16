@@ -29,6 +29,13 @@ restService.post("/echo", function(req, res) {
     ? req.body.result.parameters.echoText
     : "Seems like some problem. Speak again.";
   
+  var IntegerNumber =
+  req.body.result &&
+  req.body.result.parameters &&
+  req.body.result.parameters.number-integer
+    ? req.body.result.parameters.number-integer
+    : "Seems like some problem. Speak again.";
+  
   let SalesforceConnection = require("node-salesforce-connection");
   
 winston.log('info', 'Hello log files!', {  
@@ -46,7 +53,7 @@ winston.log('info', 'Hello log files!', {
     password: "Ajinkya@33ymtTsmynVY7EUOcZJeXlU2VV",
   });
  
-let myNewAccount = {Name: Name,Jigsaw: Name};
+let myNewAccount = {Name: Name,Jigsaw: IntegerNumber};
 let result = await sfConn.rest("/services/data/v39.0/sobjects/Account",
 {method: "POST", body: myNewAccount});
 
