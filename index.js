@@ -45,17 +45,47 @@ winston.log('info', 'Hello log files!', {
     username: "ajinkya33@zen4orce.com",
     password: "Ajinkya@33ymtTsmynVY7EUOcZJeXlU2VV",
   });
- 
-let myNewAccount = {Name: Name,Jigsaw: IntegerNumber};
-let result = await sfConn.rest("/services/data/v39.0/sobjects/Account",
-{method: "POST", body: myNewAccount});
+  
+if(Name != '' && Name != 'undefined'){
+
+      let myNewAccount = {Name: Name};
+      let result = await sfConn.rest("/services/data/v39.0/sobjects/Account",
+      {method: "POST", body: myNewAccount});
+
+      return res.json({
+      speech: result.id,
+      displayText: result.id,
+      source: "webhook-echo-sample"
+      });
+
+   }else{
+
+    let myNewAccount = {Jigsaw: IntegerNumber};
+    let result = await sfConn.rest("/services/data/v39.0/sobjects/Account",
+    {method: "POST", body: myNewAccount});
 
     return res.json({
     speech: result.id,
     displayText: result.id,
     source: "webhook-echo-sample"
-  });
+    });
+   }
  
+
+
+let myNewAccount = {Name: Name,Jigsaw: IntegerNumber};
+let result = await sfConn.rest("/services/data/v39.0/sobjects/Account",
+{method: "POST", body: myNewAccount});
+
+  return res.json({
+  speech: result.id,
+  displayText: result.id,
+  source: "webhook-echo-sample"
+});
+
+  
+  
+  
 })().catch(ex => console.error(ex.stack));
 });
 
