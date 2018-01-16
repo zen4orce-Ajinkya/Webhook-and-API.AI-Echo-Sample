@@ -70,21 +70,6 @@ if(Name != '' && Name != 'undefined'){
     source: "webhook-echo-sample"
     });
    }
- 
-
-
-let myNewAccount = {Name: Name,Jigsaw: IntegerNumber};
-let result = await sfConn.rest("/services/data/v39.0/sobjects/Account",
-{method: "POST", body: myNewAccount});
-
-  return res.json({
-  speech: result.id,
-  displayText: result.id,
-  source: "webhook-echo-sample"
-});
-
-  
-  
   
 })().catch(ex => console.error(ex.stack));
 });
