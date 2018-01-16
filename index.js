@@ -24,8 +24,8 @@ restService.post("/echo", function(req, res) {
   var IntegerNumber =
   req.body.result &&
   req.body.result.parameters &&
-  req.body.result.parameters.number-integer
-    ? req.body.result.parameters.number-integer
+  req.body.result.parameters.Number
+    ? req.body.result.parameters.Number
     : "Seems like some problem. Speak again.";
   
   let SalesforceConnection = require("node-salesforce-connection");
