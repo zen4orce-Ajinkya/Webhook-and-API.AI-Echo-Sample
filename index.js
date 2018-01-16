@@ -3,6 +3,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const winston = require("winston");
+var app = express();
+ 
+// set up middleware
+app.use(express.bodyParser());
+app.use(express.logger('dev'));
+ 
 
 
 
@@ -15,6 +21,7 @@ restService.use(
 );
 restService.use(bodyParser.json());
 restService.post("/echo", function(req, res) {
+  console.log('Inside echo post');
   var Name =
   req.body.result &&
   req.body.result.parameters &&
