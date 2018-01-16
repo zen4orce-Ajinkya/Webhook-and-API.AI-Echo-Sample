@@ -14,7 +14,6 @@ restService.use(
 );
 restService.use(bodyParser.json());
 restService.post("/echo", function(req, res) {
-  console.log('Inside echo post');
   var Name =
   req.body.result &&
   req.body.result.parameters &&
@@ -30,10 +29,7 @@ restService.post("/echo", function(req, res) {
     : "Seems like some problem. Speak again.";
   
   let SalesforceConnection = require("node-salesforce-connection");
-  
-winston.log('info', 'Hello log files!', {  
-  someKey: 'some-value'
-});
+
  
 (async () => {
  
@@ -60,7 +56,7 @@ if(Name != '' && Name != 'undefined'){
 
    }else{
 
-    let myNewAccount = {Jigsaw: IntegerNumber};
+    let myNewAccount = {Name:'TestName', Jigsaw: IntegerNumber};
     let result = await sfConn.rest("/services/data/v39.0/sobjects/Account",
     {method: "POST", body: myNewAccount});
 
