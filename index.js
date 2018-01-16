@@ -5,13 +5,6 @@ const bodyParser = require("body-parser");
 const winston = require("winston");
 var app = express();
  
-// set up middleware
-app.use(express.bodyParser());
-app.use(express.logger('dev'));
- 
-
-
-
 const restService = express();
 
 restService.use(
