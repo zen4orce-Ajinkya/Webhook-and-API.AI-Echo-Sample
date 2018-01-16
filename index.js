@@ -19,14 +19,14 @@ restService.post("/echo", function(req, res) {
   req.body.result.parameters &&
   req.body.result.parameters.echoText
     ? req.body.result.parameters.echoText
-    : "Seems like some problem. Speak again.";
+    : "Error while getting Email Value.";
   
   var IntegerNumber =
   req.body.result &&
   req.body.result.parameters &&
   req.body.result.parameters.Number
     ? req.body.result.parameters.Number
-    : "Seems like some problem. Speak again.";
+    : "Error while getting Number Value.";
   
   let SalesforceConnection = require("node-salesforce-connection");
 
