@@ -4,6 +4,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const winston = require("winston");
 var app = express();
+var debug = require('debug')('http')
+  , http = require('http')
+  , name = 'My App';
  
 const restService = express();
 
@@ -14,6 +17,8 @@ restService.use(
 );
 restService.use(bodyParser.json());
 restService.post("/echo", function(req, res) {
+  debugger;
+  debug('booting %o');
   var Name =
   req.body.result &&
   req.body.result.parameters &&
@@ -21,6 +26,7 @@ restService.post("/echo", function(req, res) {
     ? req.body.result.parameters.echoText
     : "";
   
+  console.log('**********'); 
   var IntegerNumber =
   req.body.result &&
   req.body.result.parameters &&
@@ -55,6 +61,9 @@ if(Name != '' && Name != 'undefined'){
       });
 
    }else{
+    debugger;
+    console.log('*********');
+    debug('booting333 %o');
 
     let myNewAccount = {Name:'TestName', Jigsaw: IntegerNumber};
     let result = await sfConn.rest("/services/data/v39.0/sobjects/Account",
