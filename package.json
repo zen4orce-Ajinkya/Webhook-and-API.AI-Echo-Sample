@@ -12,6 +12,7 @@
     "express": "^4.13.4",
     "node-salesforce-connection": "^2.3.0",
     "winston" : "^2.4.0",
-    "debug":"^2.6.9"
+    "debug":"^2.6.9",
+    "node-inspector":"^1.1.1"
   }
 }
