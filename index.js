@@ -2,7 +2,9 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const winston = require("winston");
 
+ 
 const restService = express();
 
 restService.use(
@@ -10,13 +12,7 @@ restService.use(
     extended: true
   })
 );
-
 restService.use(bodyParser.json());
-
-
-
-
-
 restService.post("/echo", function(req, res) {
   
   var Name =
@@ -25,7 +21,6 @@ restService.post("/echo", function(req, res) {
   req.body.result.parameters.echoText
     ? req.body.result.parameters.echoText
     : "";
-  console.log('EchoText *******'Name);
   
 
   
@@ -71,30 +66,6 @@ if(Name != '' && Name != 'undefined'){
   
 })().catch(ex => console.error(ex.stack));
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 restService.post("/audio", function(req, res) {
   var speech = "";
