@@ -18,9 +18,10 @@ restService.post("/echo", function(req, res) {
   console.log('Request Details ******',req);
  
   let events = req.body.entry[0].messaging;
- 
+  console.log('events*****Details',events);
   for (let i = 0; i < events.length; i++) {
     let event = events[i];
+   
     console.log('Event*****Details',event);
     let sender = event.sender.id;
     console.log('sender*****Details',sender);
