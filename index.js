@@ -17,15 +17,7 @@ restService.use(bodyParser.json());
 restService.post("/echo", function(req, res) {
   console.log('Request Details ******',req);
  
-  let events = req.body.entry[0].messaging;
-  console.log('events*****Details',events);
-  for (let i = 0; i < events.length; i++) {
-    let event = events[i];
-   
-    console.log('Event*****Details',event);
-    let sender = event.sender.id;
-    console.log('sender*****Details',sender);
-  }
+
  
   var Name =
   req.body.result &&
@@ -56,11 +48,14 @@ if(Name != '' && Name != 'undefined'){
       let result = await sfConn.rest("/services/data/v39.0/sobjects/Account",
       {method: "POST", body: myNewAccount});
 
-      return res.json({
+      let response =  res.json({
       speech: result.id,
       displayText: result.id,
       source: "webhook-echo-sample"
       });
+      
+      console.log('response*****',response);
+      return response;
 
    }else{
   
