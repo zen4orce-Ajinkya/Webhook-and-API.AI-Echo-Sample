@@ -56,7 +56,7 @@ if(Name != '' && Name != 'undefined'){
  
  
      let response =  res.json({
- {  
+  
   "speech":"",
   "displayText":"",
   "data":{  
@@ -91,7 +91,7 @@ if(Name != '' && Name != 'undefined'){
 
   ],
   "source ":"webhook"
-}
+
      });
       
       console.log('response*****',response);
