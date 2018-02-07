@@ -48,11 +48,51 @@ if(Name != '' && Name != 'undefined'){
       let result = await sfConn.rest("/services/data/v39.0/sobjects/Account",
       {method: "POST", body: myNewAccount});
 
-      let response =  res.json({
-      speech: result.id,
-      displayText: result.id,
-      source: "webhook-echo-sample"
-      });
+      
+ 
+ 
+ 
+ 
+ 
+ 
+     let response =  res.json({
+ {  
+  "speech":"",
+  "displayText":"",
+  "data":{  
+     "facebook":{  
+        "attachment":{  
+           "type":"template",
+           "payload":{  
+              "template_type":"generic",
+              "elements":[  
+                 {  
+                    "title":"Title: this is a title",
+                    "image_url":"https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
+                    "subtitle":"This is a subtitle",
+                    "default_action":{  
+                       "type":"web_url",
+                       "url":"https://assistant.google.com/"
+                    },
+                    "buttons":[  
+                       {  
+                          "type":"web_url",
+                          "url":"https://assistant.google.com/",
+                          "title":"This is a button"
+                       }
+                    ]
+                 }
+              ]
+           }
+        }
+     }
+  },
+  "contextOut":[  
+
+  ],
+  "source ":"webhook"
+}
+     });
       
       console.log('response*****',response);
       return response;
