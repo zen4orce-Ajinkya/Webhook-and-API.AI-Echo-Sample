@@ -57,8 +57,8 @@ if(Name != '' && Name != 'undefined'){
  
      let response =  res.json({
   
-  "speech":"",
-  "displayText":"",
+  "speech":"Please test on facebook messanger!!!!",
+  "displayText":"Please test on facebook messanger!!!!",
   "data":{  
      "facebook":{  
         "attachment":{  
